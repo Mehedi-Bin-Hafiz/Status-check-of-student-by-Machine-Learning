@@ -58,6 +58,10 @@ import time
 # plt.legend(['previous status','update status'])
 # plt.show()
 
+#vvi sort by value on a column;
+#sort=database.sort_values(by=[column_name], ascending= true)
+#this line need when i make main database;
+
 class Statuscheck():
     def __init__(self, value):
         self.ID = value
