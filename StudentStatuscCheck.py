@@ -351,4 +351,9 @@ class Statuscheck():
         with open("C:\\Users\Mehedi\Desktop\Database\prestatusdatabase.csv", 'a', encoding='utf-8') as data:
                    data.write(str(self.ID)+"   ,"+str(q1)+","+str(q2)+","+str(q3)+","+str(q4)+","+str(q5)+","+str(q6)+","+str(q7)+","+str(q8)+","+str(q9)+","+str(q10)+","+str(totalmarks)+"\n")
         data.close()
-    #knn algorithm
+        #copy database.
+        with open("PreStatusdata.csv", 'a', encoding='utf-8') as data:
+            data.write(str(self.ID) + "   ," + str(q1) + "," + str(q2) + "," + str(q3) + "," + str(q4) + "," + str(
+                q5) + "," + str(q6) + "," + str(q7) + "," + str(q8) + "," + str(q9) + "," + str(q10) + "," + str(
+                totalmarks) + "\n")
+        data.close()
