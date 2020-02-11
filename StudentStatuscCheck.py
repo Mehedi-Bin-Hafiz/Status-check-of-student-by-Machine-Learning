@@ -278,7 +278,7 @@ class Statuscheck():
         f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.csv'.format(self.ID), 'a')
 
         if (len(problemlist) > 0):
-            f.write("your problem list are:\n")
+            f.write("your problem list is:\n")
             for i in problemlist:
                 f.write(str(co2))
                 f.write(". " + i + "\n")

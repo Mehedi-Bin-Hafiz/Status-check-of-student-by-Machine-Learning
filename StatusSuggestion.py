@@ -14,13 +14,13 @@ class expert():
             f.write("2. Learn C the Hard Way. \n\n")
             print("3. C programming a modern approach. \n")
             f.write("3. C programming a modern approach \n\n")
+            print("You may reduce your problem by following these suggestion: ")
+            f.write("You may reduce your problem by following these suggestion: \n\n")
 
     def Expressions(self):
             f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.csv'.format(self.ID), 'a')
             print("For Expressions you can follow this link:")
             f.write("For Expressions you can follow this link:\n\n")
-            print("Your may reduce your problem following these suggestion: ")
-            f.write("Your may reduce your problem following these suggestion: \n\n")
             print("1. http://www.c4learn.com/c-programming/c-expression/")
             f.write("1. http://www.c4learn.com/c-programming/c-expression/\n")
             print("2. https://youtu.be/Rwtsx0BfLxk\n")
@@ -82,12 +82,12 @@ class beginner:
             f.write("1. The programming in ANSI C \n")
             print("2. Practical C Programming, 3rd Edition by Steve Oualline \n")
             f.write("2.Practical C Programming, 3rd Edition by Steve Oualline \n\n")
+            print("You may reduce your problem  by following these suggestion: ")
+            f.write("You may reduce your problem by following these suggestion: \n\n")
     def Expressions(self):
             f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.csv'.format(self.ID), 'a')
             print("For Expressions you can follow this link:")
             f.write("For Expressions you can follow this link:\n\n")
-            print("Your may reduce your problem following these suggestion: ")
-            f.write("Your may reduce your problem following these suggestion: \n\n")
             print("1. https://www.gribblelab.org/CBootCamp/3_Basic_Types_Operators_And_Expressions.html")
             f.write("1. https://www.gribblelab.org/CBootCamp/3_Basic_Types_Operators_And_Expressions.html\n")
             print("2. https://youtu.be/Rwtsx0BfLxk\n")
@@ -150,11 +150,11 @@ class intermediate:
                 f.write("1. Intermediate C Programming\n")
                 print("C Programming: A Modern Approach\n")
                 f.write("C Programming: A Modern Approach\n")
+                print("You may reduce your problem by following these suggestion: ")
+                f.write("You may reduce your problem by following these suggestion: \n\n")
 
         def Expressions(self):
                 f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.csv'.format(self.ID), 'a')
-                print("You may reduce your problem following these suggestion: ")
-                f.write("You may reduce your problem following these suggestion: \n\n")
                 print("1. https://www.indiabix.com/c-programming/expressions/")
                 f.write("1. https://www.indiabix.com/c-programming/expressions/\n")
 
