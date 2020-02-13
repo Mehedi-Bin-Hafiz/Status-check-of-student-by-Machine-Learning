@@ -11,265 +11,265 @@ from sklearn import svm
 from sklearn.neural_network import MLPClassifier
 import time
 
-###################graph part of before survey and after survey###################
-
-PreStudentsmarks = pd.read_csv("PreStatusdata.csv")
-prex = PreStudentsmarks.iloc[:, 1:-1].values #1:-1 means that without first column and last column
-#print(prex)
-prey = PreStudentsmarks.iloc[:, 11].values
-#print(prey)
-ypre = prey.astype('int')
-prestatus=ypre
-
-#UpdateStatus
-UpdateStatus = pd.read_csv("UpdateStatus.csv")
-upx = UpdateStatus.iloc[:, :-1].values
-upy = UpdateStatus.iloc[:, 10].values  # include 5 (0-5=6)
-yup = upy.astype('int')
-upstatus=yup
-
-prestatus=prestatus.tolist()
-upstatus=upstatus.tolist()
-totaldata=[]
-for i in range(0,len(upstatus)):
-    totaldata.append(i)
-
-plt.style.use('seaborn')
-plt.plot(totaldata,prestatus,marker='o',color='green')
-plt.plot(totaldata,upstatus,marker='*',color='blue')
-plt.xlabel('number of data')
-plt.ylabel('status')
-plt.title('comparison of previous status and update satus')
-plt.legend(['previous status','update status'])
-plt.show()
-###################graph part of before survey and after survey###################
-
-# vvi sort by value on a column;
-# sort=database.sort_values(by=[column_name], ascending= true)
-# this line need when i make main database;
-
-
-###################Prediction accuracy part of maindatabase###################
-
-MainDatabase = pd.read_csv("Maindatabase.csv")
-# base on database we will set iloc
-x = MainDatabase.iloc[:, :4].values  #independent variables
-#print("main independent",x)
-y = MainDatabase.iloc[ : , -1].values #dependent variables
-#print("main dependent",y)
-
-
-
-#datauserate
-
-thirtypercent=0.30  # training size 70%
-fourtypercent=0.40   # training size 60%
-fiftypercent=0.50    # training size 50%
-sixtypercent=0.60    # training size 40%
-seventypercent=0.70   # training size 30%
-
-
-#knn
-
-print("########## KNN algorithm ###########")
-
-X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=thirtypercent, random_state=0)
-knn=KNeighborsClassifier(n_neighbors=3,p=2)
-knn.fit(X_train,y_train)
-score=knn.score(X_test,y_test)
-print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=fourtypercent, random_state=0)
-knn=KNeighborsClassifier(n_neighbors=3,p=2)
-knn.fit(X_train,y_train)
-score=knn.score(X_test,y_test)
-print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-knn=KNeighborsClassifier(n_neighbors=3,p=2)
-knn.fit(X_train,y_train)
-score=knn.score(X_test, y_test)
-print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-knn=KNeighborsClassifier(n_neighbors=3,p=2)
-knn.fit(X_train,y_train)
-score=knn.score(X_test, y_test)
-print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x,y,test_size=seventypercent, random_state=0)
-knn=KNeighborsClassifier(n_neighbors=3,p=2)
-knn.fit(X_train,y_train)
-score=knn.score(X_test, y_test)
-print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-
-
-
-#naive bayes
-print("\n########## Naive Bayes algorithm ###########")
-gnb = GaussianNB()
-
-X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
-gnb.fit(X_train, y_train)
-#Predict the response for test dataset
-pred = gnb.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=fourtypercent, random_state=0)
-gnb.fit(X_train, y_train)
-#Predict the response for test dataset
-pred = gnb.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-gnb.fit(X_train, y_train)
-#Predict the response for test dataset
-pred = gnb.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-gnb.fit(X_train, y_train)
-#Predict the response for test dataset
-pred = gnb.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=seventypercent, random_state=0)
-gnb.fit(X_train, y_train)
-#Predict the response for test dataset
-pred = gnb.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-
-
-print("\n########## Decision tree algorithm ###########")
-
-dtc = DecisionTreeClassifier()
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
-clf = dtc.fit(X_train,y_train)
-
-#Predict the response for test dataset
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
-clf = dtc.fit(X_train,y_train)
-
-#Predict the response for test dataset
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-clf = dtc.fit(X_train,y_train)
-
-#Predict the response for test dataset
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-clf = dtc.fit(X_train,y_train)
-
-#Predict the response for test dataset
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
-clf = dtc.fit(X_train,y_train)
-
-#Predict the response for test dataset
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-
-
-print("\n########## SVM algorithm ###########")
-
-clf = svm.SVC(kernel='linear') # Linear Kernel
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
-clf.fit(X_train, y_train)
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
-clf.fit(X_train, y_train)
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-clf.fit(X_train, y_train)
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-clf.fit(X_train, y_train)
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
-clf.fit(X_train, y_train)
-pred = clf.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-
-
-print("\n########## Neural Network algorithm ###########")
-
-mpl = MLPClassifier(max_iter=1000,alpha=1,random_state=0)
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-
-
-###################Prediction accuracy part of maindatabase###################
-
+# ###################graph part of before survey and after survey###################
+#
+# PreStudentsmarks = pd.read_csv("PreStatusdata.csv")
+# prex = PreStudentsmarks.iloc[:, 1:-1].values #1:-1 means that without first column and last column
+# #print(prex)
+# prey = PreStudentsmarks.iloc[:, 11].values
+# #print(prey)
+# ypre = prey.astype('int')
+# prestatus=ypre
+#
+# #UpdateStatus
+# UpdateStatus = pd.read_csv("UpdateStatus.csv")
+# upx = UpdateStatus.iloc[:, :-1].values
+# upy = UpdateStatus.iloc[:, 10].values  # include 5 (0-5=6)
+# yup = upy.astype('int')
+# upstatus=yup
+#
+# prestatus=prestatus.tolist()
+# upstatus=upstatus.tolist()
+# totaldata=[]
+# for i in range(0,len(upstatus)):
+#     totaldata.append(i)
+#
+# plt.style.use('seaborn')
+# plt.plot(totaldata,prestatus,marker='o',color='green')
+# plt.plot(totaldata,upstatus,marker='*',color='blue')
+# plt.xlabel('number of data')
+# plt.ylabel('status')
+# plt.title('comparison of previous status and update satus')
+# plt.legend(['previous status','update status'])
+# plt.show()
+# ###################graph part of before survey and after survey###################
+#
+# # vvi sort by value on a column;
+# # sort=database.sort_values(by=[column_name], ascending= true)
+# # this line need when i make main database;
+#
+#
+# ###################Prediction accuracy part of maindatabase###################
+#
+# MainDatabase = pd.read_csv("Maindatabase.csv")
+# # base on database we will set iloc
+# x = MainDatabase.iloc[:, :4].values  #independent variables
+# #print("main independent",x)
+# y = MainDatabase.iloc[ : , -1].values #dependent variables
+# #print("main dependent",y)
+#
+#
+#
+# #datauserate
+#
+# thirtypercent=0.30  # training size 70%
+# fourtypercent=0.40   # training size 60%
+# fiftypercent=0.50    # training size 50%
+# sixtypercent=0.60    # training size 40%
+# seventypercent=0.70   # training size 30%
+#
+#
+# #knn
+#
+# print("########## KNN algorithm ###########")
+#
+# X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=thirtypercent, random_state=0)
+# knn=KNeighborsClassifier(n_neighbors=3,p=2)
+# knn.fit(X_train,y_train)
+# score=knn.score(X_test,y_test)
+# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=fourtypercent, random_state=0)
+# knn=KNeighborsClassifier(n_neighbors=3,p=2)
+# knn.fit(X_train,y_train)
+# score=knn.score(X_test,y_test)
+# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+# knn=KNeighborsClassifier(n_neighbors=3,p=2)
+# knn.fit(X_train,y_train)
+# score=knn.score(X_test, y_test)
+# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+# knn=KNeighborsClassifier(n_neighbors=3,p=2)
+# knn.fit(X_train,y_train)
+# score=knn.score(X_test, y_test)
+# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x,y,test_size=seventypercent, random_state=0)
+# knn=KNeighborsClassifier(n_neighbors=3,p=2)
+# knn.fit(X_train,y_train)
+# score=knn.score(X_test, y_test)
+# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+#
+# #naive bayes
+# print("\n########## Naive Bayes algorithm ###########")
+# gnb = GaussianNB()
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
+# gnb.fit(X_train, y_train)
+# #Predict the response for test dataset
+# pred = gnb.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=fourtypercent, random_state=0)
+# gnb.fit(X_train, y_train)
+# #Predict the response for test dataset
+# pred = gnb.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+# gnb.fit(X_train, y_train)
+# #Predict the response for test dataset
+# pred = gnb.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+# gnb.fit(X_train, y_train)
+# #Predict the response for test dataset
+# pred = gnb.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=seventypercent, random_state=0)
+# gnb.fit(X_train, y_train)
+# #Predict the response for test dataset
+# pred = gnb.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# print("\n########## Decision tree algorithm ###########")
+#
+# dtc = DecisionTreeClassifier()
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
+# clf = dtc.fit(X_train,y_train)
+#
+# #Predict the response for test dataset
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
+# clf = dtc.fit(X_train,y_train)
+#
+# #Predict the response for test dataset
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+# clf = dtc.fit(X_train,y_train)
+#
+# #Predict the response for test dataset
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+# clf = dtc.fit(X_train,y_train)
+#
+# #Predict the response for test dataset
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
+# clf = dtc.fit(X_train,y_train)
+#
+# #Predict the response for test dataset
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# print("\n########## SVM algorithm ###########")
+#
+# clf = svm.SVC(kernel='linear') # Linear Kernel
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
+# clf.fit(X_train, y_train)
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
+# clf.fit(X_train, y_train)
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+# clf.fit(X_train, y_train)
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+# clf.fit(X_train, y_train)
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
+# clf.fit(X_train, y_train)
+# pred = clf.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# print("\n########## Neural Network algorithm ###########")
+#
+# mpl = MLPClassifier(max_iter=1000,alpha=1,random_state=0)
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# ###################Prediction accuracy part of maindatabase###################
+#
 
 
 
@@ -344,6 +344,7 @@ class Statuscheck():
         else:
             TopicName=1
             print('Wrong, Correct Answer is: Option D\n')
+
         if (TopicName==1):
             problemlist.append("Input output")
 
@@ -449,7 +450,7 @@ class Statuscheck():
         point=totalpoint/credit
         print("your total marks ",totalmarks)
         print('Your total points are ', point)
-        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.csv'.format(self.ID), 'w')
+        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'w')
         f.write("Your total point is: ")
         f.write(str(point)+"\n\n")
         f.write("Your total mark is:")
@@ -473,7 +474,7 @@ class Statuscheck():
         f.close()
 
         print("You are a ",quality)
-        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.csv'.format(self.ID), 'a')
+        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'a')
         f.write("You are a "+quality+"\n\n")
 
         if (len(problemlist)>0):
@@ -489,7 +490,7 @@ class Statuscheck():
         f.close()
             #file:
         co2 = 1
-        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.csv'.format(self.ID), 'a')
+        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'a')
 
         if (len(problemlist) > 0):
             f.write("your problem list is:\n")
