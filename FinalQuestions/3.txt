@@ -1,0 +1,1 @@
+If char m[] = {“hello”} then what is the output of    printf("%s",m);   

@@ -1,0 +1,6 @@
+int i, sum = 2; 
+ for (i = 2; i <=5; i++) 
+ { 
+   sum=sum+i;
+ }    
+printf(" %d\n", sum);     

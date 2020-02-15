@@ -1,0 +1,1 @@
+ What is the output of this line?  printf("%f+%lf",20.00,10.00); 

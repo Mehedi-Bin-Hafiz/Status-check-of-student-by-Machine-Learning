@@ -1,0 +1,10 @@
+ Write down the output of this programe
+int x=10;
+ x++;
+ if (x == 10) { 
+printf (" %d\n ", --x);
+ } 
+else if(x==11) { 
+ printf (" %d\n ", ++x); }
+ else{
+ printf("none"); } 

@@ -1,0 +1,7 @@
+What is the output of this program? 
+int main(){
+int m = 0,
+d = 100; 
+m = d / 30;
+d = d % 30; 
+printf("month = %d days = %d", m, d); } 

@@ -1,0 +1,4 @@
+What is the output of this program. ?
+int m;
+m=17%2;
+printf(“%d”,a); 
