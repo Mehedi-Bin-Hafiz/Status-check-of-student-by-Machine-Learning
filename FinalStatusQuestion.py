@@ -21,6 +21,9 @@ class FinalStatus():
         q10=0
         position=0
         print("Topic:Input output.")
+        f1=open('..\statusmean\FinalQuestions\q1.txt','r',encoding="utf8")
+        print(f1.read())
+        f1.close()
 
         ans1=input("Enter your ans:")
 
@@ -33,6 +36,10 @@ class FinalStatus():
 
         print("\nTopic: Simple calculation \n")
         print("Question 2: ")
+        f2 = open('..\statusmean\FinalQuestions\q2.txt', 'r', encoding="utf8")
+        print(f2.read())
+        f2.close()
+
         ans1 = input("Enter your ans:")
         if (ans1 == '207'):
             print('Right, You have got 2 marks')
@@ -43,6 +50,10 @@ class FinalStatus():
 
         print("\nTopic: String: \n")
         print('Question 3: ')
+        f3 = open('..\statusmean\FinalQuestions\q3.txt', 'r', encoding="utf8")
+        print(f3.read())
+        f3.close()
+
         print('A.   printf("%ld",V )')
         print('B.   printf("%c",V)')
         print('C.   printf("%s",V)')
@@ -58,6 +69,9 @@ class FinalStatus():
 
         print("\nTopic: Input Output\n")
         print("Question 4: ")
+        f4 = open('..\statusmean\FinalQuestions\q4.txt', 'r', encoding="utf8")
+        print(f4.read())
+        f4.close()
         print('A.	printf("\\n");')
         print('B.	echo "\\\\n";')
         print("C.	printf('\\n');")
@@ -76,6 +90,10 @@ class FinalStatus():
 
         print( "\nTopic: Expression\n")
         print("Question 5: ")
+        f5 = open('..\statusmean\FinalQuestions\q5.txt', 'r', encoding="utf8")
+        print(f5.read())
+        f5.close()
+
         print("A.	2*xx+3*xy")
         print("B.	2x^2+3*x*y")
         print("C.	2*x*x+3*x*y")
@@ -89,9 +107,10 @@ class FinalStatus():
             problemlist.append("Expression")
             print('Wrong, Correct Answer is: Option C\n')
 
-        print("Question 6:"+
-               "int A =10;\n " +"if( A < 10) \n"+ "    {A += 10;}\n"+"else\n"
-                "    {A -= 10; }\n"+'printf(''"%d"'',A); ')
+        print("Question 6:\n")
+        f6 = open('..\statusmean\FinalQuestions\q6.txt', 'r', encoding="utf8")
+        print(f6.read())
+        f6.close()
         ans1=input("Enter your ans:")
         ans1=ans1.lower()
         if(ans1=='0'):
@@ -105,6 +124,10 @@ class FinalStatus():
         print( "\nTopic: Conditional statement\n")
 
         print('Question 7: ')
+        f7 = open('..\statusmean\FinalQuestions\q7.txt', 'r', encoding="utf8")
+        print(f7.read())
+        f7.close()
+
         ans1=input("Enter your ans:")
         ans1=ans1.lower()
         if(ans1=='output is: '):
@@ -118,6 +141,9 @@ class FinalStatus():
         print( "\nTopic: Control Instructions\n")
 
         print("Question 8: ")
+        f8 = open('..\statusmean\FinalQuestions\q8.txt', 'r', encoding="utf8")
+        print(f8.read())
+        f1.close()
         ans1=input("Enter your ans:")
         ans1=ans1.lower()
         if(ans1=='output is: 21'):
@@ -130,6 +156,9 @@ class FinalStatus():
         print( "\nTopic: loop\n")
 
         print("Question 9: " )
+        f9 = open('..\statusmean\FinalQuestions\q9.txt', 'r', encoding="utf8")
+        print(f9.read())
+        f9.close()
         print('A. 1, 11\n   1, 12\n   2, 13')
         print('B. 0, 11\n   1, 12\n   2, 13')
         print("C. 0, 10\n   1, 11\n   2, 13")
@@ -146,6 +175,9 @@ class FinalStatus():
         print("\nTopic: Problem solving\n")
 
         print(" Question 10:  ")
+        f10 = open('..\statusmean\FinalQuestions\q10.txt', 'r', encoding="utf8")
+        print(f10.read())
+        f10.close()
         print("A. (25/100)*320")
         print("B. (100/25)*320")
         print("C. (100/325)*25")
