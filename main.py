@@ -1,5 +1,19 @@
 from StudentStatuscCheck import Statuscheck
-while(True):
-    ID=input("Enter your ID:")
-    hello=Statuscheck(ID)
-    hello.Status()
+from BasicProblem import Answer_generator
+
+# import time
+#
+# file=open('./BasicProblem/sid2.csv', 'r')
+# memo=[ ] #virtual memory
+#
+#
+#
+#
+# while(True):
+#     for i in file:
+#         ID = i.rstrip('\n')
+#         Answer = Answer_generator.Answer()
+#         AllAnswer= Answer.anserdef()
+#         hello=Statuscheck(ID,AllAnswer)
+#         hello.Status()
+#         print(i)
