@@ -2,7 +2,7 @@ import pandas as pd
 import time
 MainDatabase = pd.read_excel(r'../MainDatabase/MainDatabase.xlsx')
 
-y = MainDatabase['FinalMarks'].values #dependent variables
+y = MainDatabase['Marks'].values #dependent variables
 y=y.astype('int')
 
 
@@ -30,4 +30,5 @@ for i in range(len(y)):
 
 
 MainDatabase.insert(13,"Classification",classificaion,True)
-MainDatabase.to_excel(r'FullAndFinalDatabase.xlsx', index=False)
+MainDatabase.to_excel(r'../MainDatabase/FullAndFinalDatabase.xlsx', index=False)
+

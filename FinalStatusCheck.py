@@ -300,7 +300,7 @@ class Statuscheck():
         #         #            data.write(str(self.ID)+"   ,"+str(q1)+","+str(q2)+","+str(q3)+","+str(q4)+","+str(q5)+","+str(q6)+","+str(q7)+","+str(q8)+","+str(q9)+","+str(q10)+","+str(totalmarks)+"\n")
         #         # data.close()
         #copy database.
-        with open("./ResultsDatabase/FinalStatusdata3.csv", 'a', encoding='utf-8') as data:
+        with open("./SecondaryDatabases/FinalStatusdata3.csv", 'a', encoding='utf-8') as data:
             data.write(str(self.ID) + "   ," + str(q1) + "," + str(q2) + "," + str(q3) + "," + str(q4) + "," + str(
                 q5) + "," + str(q6) + "," + str(q7) + "," + str(q8) + "," + str(q9) + "," + str(q10) + "," + str(
                 totalmarks) + "\n")

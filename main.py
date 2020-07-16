@@ -4,9 +4,9 @@ from FinalStatusCheck import Statuscheck
 from BasicProblem import Answer_generator
 
 import time
-
+## it is our first work to generate student id
 file=open('./BasicProblem/sid2.csv', 'r')
-memo=[ ] #virtual memory
+
 
 
 
