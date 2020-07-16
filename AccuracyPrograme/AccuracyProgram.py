@@ -10,6 +10,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm
 from sklearn.neural_network import MLPClassifier
 
+from sklearn import linear_model#print(pred.item())  #item(index of NDarray)
+
 
 
 #database
@@ -18,21 +20,33 @@ MainDatabase = pd.read_excel(r'../MainDatabase/FullAndFinalDatabase.xlsx')
 #print(MainDatabase.head())
 # base on database we will set iloc
 x = MainDatabase.iloc[:, 1:11].values  #independent variables
-# print(x)
+print(x)
 y = MainDatabase['Classification'].values #dependent variables
 y=y.astype('int') ### note y must be integer all time other wise ValueError: Unknown label type: 'continuous' is produced.
-# print(y)
+print(y)
 #datauserate
 
 
 
 
 
-thirtypercent=0.30  # training size 70%
-fourtypercent=0.40   # training size 60%
-fiftypercent=0.50    # training size 50%
-sixtypercent=0.60    # training size 40%
-seventypercent=0.70   # training size 30%
+thirtypercent= 0.30  # training size 70%
+fourtypercent= 0.40   # training size 60%
+fiftypercent= 0.50    # training size 50%
+sixtypercent= 0.60    # training size 40%
+seventypercent= 0.70   # training size 30%
+
+
+#
+# X_train,X_test,y_train,y_test = train_test_split(x,y,test_size=thirtypercent, random_state=0)
+# reg = linear_model.BayesianRidge()
+# reg.fit(X_train,y_train)
+# y_pred=reg.predict([[0,0,0,0,0,0,0,0,0,0,0]])
+# print(reg.coef_) #y = mx + c #here m= coef_
+# print(reg.intercept_) #y = mx + c #here c= intercept_
+# print(y_pred)
+
+
 
 
 #knn
@@ -231,51 +245,50 @@ print("test size=70, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_tes
 
 
 
-print("\n########## Neural Network algorithm ###########")
-
-mpl = MLPClassifier(max_iter=1000,alpha=1,random_state=0)
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-
-X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
-mpl.fit(X_train, y_train)
-pred = mpl.predict(X_test)
-score=metrics.accuracy_score(y_test, pred)
-print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-
-
-
-
-
+# print("\n########## Neural Network algorithm ###########")
 #
-# ##################prediction########################
+# mpl = MLPClassifier(max_iter=1000,alpha=1,random_state=0)
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
 #
 #
 # X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
-# clf = dtc.fit(X_train,y_train)
-# pred = clf.predict([[9,4.21,4.82,3.01,18.8,20.36]])
-#print(pred.item())  #item(index of NDarray)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
+#
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
+#
+# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
+# mpl.fit(X_train, y_train)
+# pred = mpl.predict(X_test)
+# score=metrics.accuracy_score(y_test, pred)
+# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
+
+
+#####################Height Algo########################
+
+clf = svm.SVC(kernel='linear') # Linear Kernel
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
+clf.fit(X_train, y_train)
+print(X_test)
+pred = clf.predict(X_test)
+print(pred)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
