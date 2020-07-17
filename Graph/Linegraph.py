@@ -12,7 +12,8 @@ from sklearn.neural_network import MLPClassifier
 
 
 # MainDatabase = pd.read_excel(r'../BackupData/FullAndFinalDatabase.xlsx').iloc[:1000]
-MainDatabase = pd.read_csv(r'../BackupData/PreStatusdata.csv')
+# MainDatabase = pd.read_csv(r'../BackupData/PreStatusdata.csv')
+MainDatabase = pd.read_csv(r'../BasicProblem/testprenumberlist.csv').iloc[:500]
 PreMark = MainDatabase['Marks'].values
 # FinalMarks = MainDatabase['FinalMarks'].values #dependent variables
 

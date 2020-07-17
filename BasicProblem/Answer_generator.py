@@ -3,6 +3,7 @@ import math
 
 
 
+
 import random
 import math
 
@@ -11,7 +12,9 @@ import math
 class SuperAnswer():
 
     def zero(self):
-        return 0,0,0,0,0,0,0,0,0,0
+        file = open('testprenumberlist.csv', 'a')
+        file.write("0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0"+ '\n')
+        file.close()
     def MainNumbers(self,lowRange,highRange,percent):
         g = []
         while percent >= 0:
@@ -38,12 +41,56 @@ class SuperAnswer():
             anss.append(a)
             file = open('testprenumberlist.csv','a')
             file.write(str(anss)+'\n')
+            file.close()
 
 
 
 
 obj = SuperAnswer()
-obj.MainNumbers(10,15,10)
+
+for i in range(10):
+    obj.MainNumbers(1,7,5)
+    obj.zero()
+    obj.MainNumbers(15,25,11)
+    obj.MainNumbers(8,12,2)
+    obj.MainNumbers(18,23,1)
+    obj.zero()
+    obj.MainNumbers(1,7,5)
+    obj.zero()
+    obj.MainNumbers(13,17,1)
+    obj.zero()
+    obj.MainNumbers(38,44,1)
+    obj.zero()
+    obj.MainNumbers(32,37,1)
+    obj.zero()
+    obj.zero()
+    obj.MainNumbers(15,25,11)
+
+    obj.zero()
+    obj.MainNumbers(8,12,2)
+    obj.zero()
+    obj.MainNumbers(18,23,1)
+    obj.MainNumbers(13,17,1)
+    obj.zero()
+    obj.MainNumbers(18,23,1)
+    obj.zero()
+    obj.MainNumbers(13,17,1)
+    obj.MainNumbers(18,23,1)
+    obj.zero()
+    obj.MainNumbers(13,17,1)
+    obj.MainNumbers(15,25,11)
+    obj.MainNumbers(18,23,1)
+    obj.zero()
+    obj.MainNumbers(13,17,1)
+
+    obj.MainNumbers(15,25,11)
+    obj.MainNumbers(38,44,1)
+    obj.zero()
+    obj.MainNumbers(32,37,1)
+    obj.MainNumbers(15,25,11)
+    obj.zero()
+    obj.MainNumbers(26,34,2)
+    obj.zero()
 
 
 
