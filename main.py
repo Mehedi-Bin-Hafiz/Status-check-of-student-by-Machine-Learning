@@ -1,17 +1,23 @@
-# from PreStatuscCheck import Statuscheck
-from FinalStatusCheck import Statuscheck
+from PreStatuscCheck import Statuscheck
+# from FinalStatusCheck import Statuscheck
 
-from BasicProblem import Answer_generator
-
+import pandas as pd
 import time
 ## it is our first work to generate student id
-file=open('./BasicProblem/sid2.csv', 'r')
+file=open('./SecondaryDatabases/sid2.csv', 'r')
+numberfile = pd.read_csv('./SecondaryDatabases/testprenumberlist.csv')
 
 
-while(True):
-    for i in file:
-        ID = i.rstrip('\n')
-        Answer = Answer_generator.Answer()
-        AllAnswer= Answer.anserdef()
-        hello=Statuscheck(ID,AllAnswer)
-        hello.Status()
+virtualtuple =[]
+
+for i in numberfile.values:
+    virtualtuple.append(tuple(i))
+
+pos = 0
+for i in file:
+    ID = i.rstrip('\n')
+    hello=Statuscheck(ID,virtualtuple[pos],pos)
+    hello.Status()
+    pos += 1
+else:
+    print("All operation is done")
