@@ -24,7 +24,7 @@ class Statuscheck():
         # print("question 1: What is the output of this code? Printf('\\\\'); \n")
         ans1=A1
 
-        if(ans1== 2 ): ##//
+        if(ans1== 1 ): ##//
             # print('Right, You have got 1 marks')
             q1=1
         else:

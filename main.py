@@ -8,9 +8,6 @@ import time
 file=open('./BasicProblem/sid2.csv', 'r')
 
 
-
-
-
 while(True):
     for i in file:
         ID = i.rstrip('\n')
