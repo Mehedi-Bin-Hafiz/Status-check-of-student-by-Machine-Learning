@@ -2,7 +2,7 @@ import pandas as pd
 import time
 MainDatabase = pd.read_excel(r'../MainDatabase/MainDatabase.xlsx')
 
-y = MainDatabase['Marks'].values #dependent variables
+y = MainDatabase['FinalMarks'].values #dependent variables
 y=y.astype('int')
 
 

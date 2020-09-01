@@ -24,7 +24,7 @@ class Statuscheck():
         # print("question 1: What is the output of this code? Printf('\\\\'); \n")
         ans1=A1
 
-        if(ans1== 2 ): ##//
+        if(ans1== 1 ): ##//
             # print('Right, You have got 1 marks')
             q1=1
         else:
@@ -34,7 +34,7 @@ class Statuscheck():
         # print("\nTopic: Simple calculation \n")
         # print("Question 2:  What is the output of this line?  printf("'"%d%d"'",10+10,10-3);")
         ans1 = A2
-        if (ans1 == 3): ##207
+        if (ans1 == 2): ##207
             # print('Right, You have got 2 marks')
             q2 = 2
         else:
@@ -83,7 +83,7 @@ class Statuscheck():
         # print("D.   2*x*2+3*x*y")
         ans1=A5
 #         # ans1=ans1.lower()
-        if(ans1== 3):
+        if(ans1== 5):
             # print('Right, You have got 5 marks')
             q5=5
         else:
@@ -95,7 +95,7 @@ class Statuscheck():
         #         "    {A -= 10; }\n"+'printf(''"%d"'',A); ')
         ans1=A6
 #         # ans1=ans1.lower()
-        if(ans1== 1 ):
+        if(ans1== 6 ):
             # print('Right, You have got 6 marks')
             q6=6
         else:
@@ -108,13 +108,13 @@ class Statuscheck():
         # print('Question 7: \nint  i = 2; \nprintf("output is: ");\nswitch (i)\n     { \n     case 1: \n           printf("case 1");\n     } ')
         ans1= A7
         # ans1=ans1.lower()
-        if(ans1==3):
+        if(ans1==7):
             # print('Right, You have got 7 marks')
             q7=7
         else:
             pass
             # print('Wrong Correct Answer is: output is: \n')
-        if (TopicName == 2):
+        if (TopicName == 8):
             problemlist.append("Conditional statement")
 
         # print( "\nTopic: Control Instructions\n")
@@ -127,7 +127,7 @@ class Statuscheck():
         #        " return 0;\n} ")
         ans1=A8
         # ans1=ans1.lower()
-        if(ans1==4):
+        if(ans1==8):
             # print('Right, You have got 8 Marks')
             q8=8
         else:
@@ -149,7 +149,7 @@ class Statuscheck():
 
         ans1=A9
         # ans1=ans1.lower()
-        if(ans1== 2):
+        if(ans1== 9):
             # print('Right, You have got 9 marks')
             q9=9
         else:
@@ -165,7 +165,7 @@ class Statuscheck():
 
         ans1 = A10
         # ans1 = ans1.lower()
-        if (ans1 == 1):
+        if (ans1 == 10):
             # print('Right, You have got 10 point')
             q10 = 10
         else:
@@ -300,7 +300,7 @@ class Statuscheck():
         #         #            data.write(str(self.ID)+"   ,"+str(q1)+","+str(q2)+","+str(q3)+","+str(q4)+","+str(q5)+","+str(q6)+","+str(q7)+","+str(q8)+","+str(q9)+","+str(q10)+","+str(totalmarks)+"\n")
         #         # data.close()
         #copy database.
-        with open("./SecondaryDatabases/FinalStatusdata3.csv", 'a', encoding='utf-8') as data:
+        with open("./SecondaryDatabases/FinalStatusdata.csv", 'a', encoding='utf-8') as data:
             data.write(str(self.ID) + "   ," + str(q1) + "," + str(q2) + "," + str(q3) + "," + str(q4) + "," + str(
                 q5) + "," + str(q6) + "," + str(q7) + "," + str(q8) + "," + str(q9) + "," + str(q10) + "," + str(
                 totalmarks) + "\n")
