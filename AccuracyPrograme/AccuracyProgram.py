@@ -282,7 +282,7 @@ print("test size=70, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_tes
 # print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
 
 
-#####################Height Algo########################
+#####################Heighest Algo########################
 
 clf = svm.SVC(kernel='linear') # Linear Kernel
 X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
