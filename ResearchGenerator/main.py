@@ -1,8 +1,8 @@
 # from PreStatuscCheck import Statuscheck
-from FinalStatusCheck import Statuscheck
+from ResearchGenerator.FinalStatusCheck import Statuscheck
 
 import pandas as pd
-import time
+
 ## it is our first work to generate student id
 # file=open('./SecondaryDatabases/sid2.csv', 'r')
 numberfile = pd.read_csv('./SecondaryDatabases/testfinalnumberlist.csv')

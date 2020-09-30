@@ -1,10 +1,11 @@
-from StatusSuggestion import *
+from ResearchGenerator.StatusSuggestion import *
 
 ###################Status check part###################
 class Statuscheck():
-    def __init__(self, value,allanswer):
+    def __init__(self, value,allanswer,pos):
         self.ID = value
         self.allanswer = allanswer
+        self.pos = pos
     def Status(self):
         A1,A2,A3,A4,A5,A6,A7,A8,A9,A10 = self.allanswer
         problemlist=[]
@@ -95,7 +96,7 @@ class Statuscheck():
         #         "    {A -= 10; }\n"+'printf(''"%d"'',A); ')
         ans1=A6
 #         # ans1=ans1.lower()
-        if(ans1== 6 ):
+        if(ans1== 6):
             # print('Right, You have got 6 marks')
             q6=6
         else:
@@ -114,7 +115,7 @@ class Statuscheck():
         else:
             pass
             # print('Wrong Correct Answer is: output is: \n')
-        if (TopicName == 8):
+        if (TopicName == 2):
             problemlist.append("Conditional statement")
 
         # print( "\nTopic: Control Instructions\n")
@@ -176,133 +177,130 @@ class Statuscheck():
         totalpoint=q1*2+q2*2+q3*2+q4+q5*2+q6*2+q7*2+q8*2+q9*2+q10*2
         totalmarks=q1+q2+q3+q4+q5+q6+q7+q8+q9+q10
         point=totalpoint/credit
+        # print("your total marks ",totalmarks)
+        # print('Your total points are ', point)
+        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'a')
+        f.write("Your total point is: ")
+        f.write(str(point)+"\n\n")
+        f.write("Your total mark is:")
+        f.write(str(totalmarks)+"\n\n")
 
-        # # print("your total marks ",totalmarks)
-        # # print('Your total points are ', point)
-        # f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'w')
-        # f.write("Your total point is: ")
-        # f.write(str(point)+"\n\n")
-        # f.write("Your total mark is:")
-        # f.write(str(totalmarks)+"\n\n")
-        #
-        # # huge scope for analysis
-        #
-        # # print("\n")
-        # quality=None
-        # find=5.5/3
-        # if(point>=0 and point<=find):
-        #     quality='beginner'
-        #
-        # elif(point>find and point<=find*2):
-        #
-        #     quality='intermediate'
-        #
-        # elif(point>find*2 and point <=find*3):
-        #     quality='expert'
-        #
-        # f.close()
-        #
-        # # print("You are a ",quality)
-        # f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'a')
-        # f.write("You are a "+quality+"\n\n")
-        #
-        # if (len(problemlist)>0):
-        #     # print("your problem are:\n")
-        #     cou=1
-        #     for i in problemlist:
-        #
-        #         # print(cou,". ",i)
-        #         cou=cou+1
-        # else:
-        #     pass
-        #     # print("Welcome, you have no problem.")
-        #
-        # f.close()
-        #     #file:
-        # co2 = 1
-        # # f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'a')
-        #
-        # if (len(problemlist) > 0):
-        #     # f.write("your problem list is:\n")
-        #     for i in problemlist:
-        #         # f.write(str(co2))
-        #         # f.write(". " + i + "\n")
-        #         co2 = co2 + 1
-        # else:
-        #     f.write("welcome, You have no problem.l")
-        # f.close()
+        # huge scope for analysis
 
-        # if(quality=='expert'):
-        #     ex=expert(self.ID)
-        #     ex.books()
-        #     for p in problemlist:
-        #         if(p=="simple calculation"):
-        #             ex.calculation()
-        #         elif(p=="Expression"):
-        #             ex.Expressions()
-        #         elif(p=='Problem solving'):
-        #             ex.problem()
-        #         elif(p=="loop"):
-        #             ex.loop()
-        #         elif(p=='Input output'):
-        #             ex.inputOutput()
-        #         elif(p=="String"):
-        #             ex.string()
-        #         elif(p=="Conditional statement"):
-        #             ex.conditional()
-        #         elif(p=='Arithmetic operation'):
-        #             ex.arithmetic()
-        #
-        # if(quality=='beginner'):
-        #         beg=beginner(self.ID)
-        #         beg.books()
-        #         for p in problemlist:
-        #             if (p == "simple calculation"):
-        #                 beg.calculation()
-        #             elif (p == "Expression"):
-        #                 beg.Expressions()
-        #             elif (p == 'Problem solving'):
-        #                 beg.problem()
-        #             elif (p == "loop"):
-        #                 beg.loop()
-        #             elif (p == 'Input output'):
-        #                 beg.inputOutput()
-        #             elif (p == "String"):
-        #                 beg.string()
-        #             elif (p == "Conditional statement"):
-        #                 beg.conditional()
-        #             elif (p == 'Arithmetic operation'):
-        #                 beg.arithmetic()
-        #
-        # if (quality == 'intermediate'):
-        #         inme = intermediate(self.ID)
-        #         inme.books()
-        #         for p in problemlist:
-        #             if (p == "simple calculation"):
-        #                 inme.calculation()
-        #             elif (p == "Expression"):
-        #                 inme.Expressions()
-        #             elif (p == 'Problem solving'):
-        #                 inme.problem()
-        #             elif (p == "loop"):
-        #                 inme.loop()
-        #             elif (p == 'Input output'):
-        #                 inme.inputOutput()
-        #             elif (p == "String"):
-        #                 inme.string()
-        #             elif (p == "Conditional statement"):
-        #                 inme.conditional()
-        #             elif (p == 'Arithmetic operation'):
-        #                 inme.arithmetic()
+        # print("\n")
+        quality=None
+        find=5.5/3
+        if(point>=0 and point<=find):
+            quality='beginner'
+
+        elif(point>find and point<=find*2):
+
+            quality='intermediate'
+
+        elif(point>find*2 and point <=find*3):
+            quality='expert'
+
+        f.close()
+
+        # print("You are a ",quality)
+        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'a')
+        f.write("You are a "+quality+"\n\n")
+
+        if (len(problemlist)>0):
+            # print("your problem are:\n")
+            cou=1
+            for i in problemlist:
+
+                # print(cou,". ",i)
+                cou=cou+1
+        else:
+            pass
+            # print("Welcome, you have no problem.")
+
+        f.close()
+            #file:
+        co2 = 1
+        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'a')
+
+        if (len(problemlist) > 0):
+            f.write("your problem list is:\n")
+            for i in problemlist:
+                f.write(str(co2))
+                f.write(". " + i + "\n")
+                co2 = co2 + 1
+        else:
+            f.write("welcome, You have no problem.l")
+        f.close()
+
+        if(quality=='expert'):
+            ex=expert(self.ID)
+            ex.books()
+            for p in problemlist:
+                if(p=="simple calculation"):
+                    ex.calculation()
+                elif(p=="Expression"):
+                    ex.Expressions()
+                elif(p=='Problem solving'):
+                    ex.problem()
+                elif(p=="loop"):
+                    ex.loop()
+                elif(p=='Input output'):
+                    ex.inputOutput()
+                elif(p=="String"):
+                    ex.string()
+                elif(p=="Conditional statement"):
+                    ex.conditional()
+                elif(p=='Arithmetic operation'):
+                    ex.arithmetic()
+
+        if(quality=='beginner'):
+                beg=beginner(self.ID)
+                beg.books()
+                for p in problemlist:
+                    if (p == "simple calculation"):
+                        beg.calculation()
+                    elif (p == "Expression"):
+                        beg.Expressions()
+                    elif (p == 'Problem solving'):
+                        beg.problem()
+                    elif (p == "loop"):
+                        beg.loop()
+                    elif (p == 'Input output'):
+                        beg.inputOutput()
+                    elif (p == "String"):
+                        beg.string()
+                    elif (p == "Conditional statement"):
+                        beg.conditional()
+                    elif (p == 'Arithmetic operation'):
+                        beg.arithmetic()
+
+        if (quality == 'intermediate'):
+                inme = intermediate(self.ID)
+                inme.books()
+                for p in problemlist:
+                    if (p == "simple calculation"):
+                        inme.calculation()
+                    elif (p == "Expression"):
+                        inme.Expressions()
+                    elif (p == 'Problem solving'):
+                        inme.problem()
+                    elif (p == "loop"):
+                        inme.loop()
+                    elif (p == 'Input output'):
+                        inme.inputOutput()
+                    elif (p == "String"):
+                        inme.string()
+                    elif (p == "Conditional statement"):
+                        inme.conditional()
+                    elif (p == 'Arithmetic operation'):
+                        inme.arithmetic()
 
 
-        # with open("C:\\Users\Mehedi\Desktop\Database\Finalstatusdatabase.csv", 'a', encoding='utf-8') as data:
-        #         #            data.write(str(self.ID)+"   ,"+str(q1)+","+str(q2)+","+str(q3)+","+str(q4)+","+str(q5)+","+str(q6)+","+str(q7)+","+str(q8)+","+str(q9)+","+str(q10)+","+str(totalmarks)+"\n")
-        #         # data.close()
-        #copy database.
-        with open("./SecondaryDatabases/FinalStatusdata.csv", 'a', encoding='utf-8') as data:
+
+        with open("./SecondaryDatabases/PreStatusdata.csv", 'a', encoding='utf-8') as data:
             data.write(str(self.ID) + "   ," + str(q1) + "," + str(q2) + "," + str(q3) + "," + str(q4) + "," + str(
                 q5) + "," + str(q6) + "," + str(q7) + "," + str(q8) + "," + str(q9) + "," + str(q10) + "," + str(
                 totalmarks) + "\n")
         data.close()
+
 
