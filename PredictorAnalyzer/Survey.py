@@ -11,7 +11,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm
 from sklearn.neural_network import MLPClassifier
-
 from sklearn import linear_model#print(pred.item())  #item(index of NDarray)
 
 ###################Status check part###################
@@ -189,11 +188,11 @@ class Statuscheck():
         point=totalpoint/credit
         print("your total marks ",totalmarks)
         print('Your total points are ', point)
-        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'w')
+        f = open('..\SuggestionFolder\suggestion\{0}.doc'.format(self.ID), 'w')
         f.write("Your total point is: ")
         f.write(str(point)+"\n\n")
         f.write("Your total mark is:")
-        f.write(str(totalpoint)+"\n\n")
+        f.write(str(totalmarks)+"\n\n")
 
         # huge scope for analysis
 
@@ -213,11 +212,11 @@ class Statuscheck():
         f.close()
 
         print("You are a ",quality)
-        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'a')
+        f = open('..\SuggestionFolder\suggestion\{0}.doc'.format(self.ID), 'a')
         f.write("You are a "+quality+"\n\n")
 
         if (len(problemlist)>0):
-            print("your problem are:\n")
+            print("Your problems are:\n")
             cou=1
             for i in problemlist:
 
@@ -229,7 +228,7 @@ class Statuscheck():
         f.close()
             #file:
         co2 = 1
-        f = open('C:\\Users\Mehedi\Desktop\suggestion\{0}.doc'.format(self.ID), 'a')
+        f = open('..\SuggestionFolder\suggestion\{0}.doc'.format(self.ID), 'a')
 
         if (len(problemlist) > 0):
             f.write("your problem list is:\n")
@@ -312,8 +311,10 @@ class Statuscheck():
         y = y.astype(
             'int')  ### note y must be integer all time other wise ValueError: Unknown label type: 'continuous' is produced.
         # datauserate
+        f = open('..\SuggestionFolder\suggestion\{0}.doc'.format(self.ID), 'a')
 
-        print("##################Prediction################")
+        print("********Prediction********")
+        f.write("********Prediction********\n")
         clf = svm.SVC(kernel='linear')  # Linear Kernel
         X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=.30, random_state=0)
         clf.fit(X_train, y_train)
@@ -321,7 +322,14 @@ class Statuscheck():
 
         if pred == 0:
             print("Future Prediction is Beginner")
+            f.write("Future Prediction is Beginner.")
+            f.close()
         elif pred == 1:
             print("Future Prediction is Intermediate")
+            f.write("Future Prediction is Intermediate.")
+            f.close()
         else:
-           print(" Future Prediction is Expert")
+           print("Future Prediction is Expert")
+           f.write("Future Prediction is Expert.")
+           f.close()
+

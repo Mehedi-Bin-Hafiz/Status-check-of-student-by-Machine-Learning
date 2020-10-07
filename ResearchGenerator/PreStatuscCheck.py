@@ -229,7 +229,7 @@ class Statuscheck():
                 f.write(". " + i + "\n")
                 co2 = co2 + 1
         else:
-            f.write("welcome, You have no problem.l")
+            f.write("welcome, You have no problem.")
         f.close()
 
         if(quality=='expert'):
