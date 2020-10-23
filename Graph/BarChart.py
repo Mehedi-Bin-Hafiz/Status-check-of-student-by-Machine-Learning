@@ -81,4 +81,5 @@ ax.set_xticklabels(labels)
 ax.set_yticks([0,3,6,9,12,15,18,21])
 ax.legend()
 plt.grid()
+plt.savefig('bargraph.png') #bar graph
 plt.show()
