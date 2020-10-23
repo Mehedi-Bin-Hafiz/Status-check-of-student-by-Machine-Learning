@@ -11,6 +11,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm
 from sklearn.neural_network import MLPClassifier
 
+plt.rcParams["figure.figsize"] = [12,6]
+plt.rcParams.update({'font.size': 11})
+plt.rcParams["font.family"] = "Times New Roman"
+
 #
 # MainDatabase = pd.read_excel(r'../MainDatabase/FullAndFinalDatabase.xlsx')
 #
@@ -64,4 +68,5 @@ plt.plot(GraphX,FinalList,color='#6ab04c',linewidth=2)
 axes.set_yticks([-15,-10,-5,0, 5, 10, 15, 20, 25, 30, 35, 40, 45,50,55,60,65,70])
 plt.grid()
 plt.legend(['PreMark','FinalMark'])
+plt.savefig('comparision line graph.png') #
 plt.show()
