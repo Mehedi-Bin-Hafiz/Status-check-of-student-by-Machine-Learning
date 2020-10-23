@@ -11,7 +11,9 @@ from sklearn import svm
 
 
 '''Real Vs predicted Graph'''
-
+plt.rcParams["figure.figsize"] = [12,6]
+plt.rcParams.update({'font.size': 11})
+plt.rcParams["font.family"] = "Times New Roman"
 
 MainDatabase = pd.read_excel(r'../MainDatabase/FullAndFinalDatabase.xlsx')
 #print(MainDatabase.head())
